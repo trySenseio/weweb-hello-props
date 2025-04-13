@@ -1,25 +1,22 @@
 <template>
-    <div :style="{ color: content.color || '#000', fontSize: '1.5rem', fontWeight: 'bold' }">
-      {{ content.message || 'Fallback Text' }}
+    <div>
+      <p>{{ message }}</p>
     </div>
   </template>
   
-  <script>
-  export default {
-    props: {
-      content: {
-        type: Object,
-        required: true,
-        default: () => ({
-          message: 'Fallback Text',
-          color: '#000000',
-        }),
-      },
-    },
-  }
-  </script>
+  <script setup>
+  import { computed } from 'vue';
   
-  <style scoped>
-  /* Optional: zusätzliche Styles */
-  </style>
+  const props = defineProps({
+    content: {
+      type: Object,
+      default: () => ({
+        message: 'Fallback Text',
+      }),
+    },
+  });
+  
+  // Falls message mal fehlt, gib "Fallback Text" aus
+  const message = computed(() => props.content.message || 'Fallback Text');
+  </script>
   
