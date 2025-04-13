@@ -1,11 +1,11 @@
 export default {
     editor: {
-      label: 'Hello World Element',
+      label: 'Hello World',
       icon: 'text_fields',
     },
     properties: {
       content: {
-        label: 'Element Settings',
+        label: 'Inhalt',
         type: 'object',
         defaultValue: {
           message: 'Hello from WeWeb 👋',
@@ -17,10 +17,12 @@ export default {
             type: 'text',
           },
           color: {
-            label: 'Textfarbe',
+            label: 'Farbe',
             type: 'color',
           },
         },
+        bindable: true,
+        editable: true,
       },
     },
   }
