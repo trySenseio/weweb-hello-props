@@ -1,19 +1,19 @@
 export default {
     editor: {
-      label: 'Hello World Element',
+      label: 'Hello World',
       icon: 'text_fields',
     },
     properties: {
-      message: {
-        label: 'Text',
-        type: 'text',
-        defaultValue: 'Hello from WeWeb 👋',
-      },
-      textColor: {
-        label: 'Textfarbe',
-        type: 'color',
-        defaultValue: '#333333',
-      },
-    },
+      content: {
+        label: 'Texteinstellungen',
+        type: 'object',
+        defaultValue: {
+          message: 'Hello from WeWeb 👋',
+          color: '#000000'
+        },
+        bindable: true,
+        editable: true
+      }
+    }
   }
   

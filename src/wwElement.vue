@@ -1,19 +1,19 @@
 <template>
-    <div :style="{ color: content.textColor }">
-      {{ content.message }}
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      content: {
-        type: Object,
-        required: true,
-      },
-    },
+  <div :style="{ color: content.color }">
+    {{ content.message }}
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    content: {
+      type: Object,
+      required: true
+    }
   }
-  </script>
+}
+</script>
   
   <style scoped>
   div {
