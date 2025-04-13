@@ -1,0 +1,12 @@
+{
+    "name": "weweb-hello-props",
+    "version": "0.0.1",
+    "scripts": {
+      "serve": "weweb serve",
+      "build": "weweb build"
+    },
+    "devDependencies": {
+    "@weweb/cli": "*"
+    }
+  }
+  
