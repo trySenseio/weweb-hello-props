@@ -4,13 +4,18 @@ export default {
       icon: 'tab',
     },
     properties: {
-      tabsConfig: {
-        label: 'Tab-Namen (JSON)',
-        type: 'json',
-        defaultValue: '["Info", "Details", "Kontakt"]',
-        editable: true,
-      },
-    },
+        tabs: {
+          label: 'Tab-Namen (JSON)',
+          type: 'json',
+          defaultValue: [
+            { label: "Info" },
+            { label: "Details" },
+            { label: "Kontakt" }
+          ],
+          editable: true,
+          bindable: true,
+        }
+      },      
     wwChildren: true, // Slots aktivieren
   }
   
