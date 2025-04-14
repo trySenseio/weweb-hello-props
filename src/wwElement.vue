@@ -12,7 +12,6 @@
       </div>
   
       <div class="tab-content">
-        <!-- Slot mit dynamischem Namen -->
         <slot :name="tabs[activeTab]?.value" />
       </div>
     </div>
