@@ -1,33 +1,35 @@
 <template>
-    <div>
-      <label style="font-weight: 600; margin-bottom: 8px; display: block;">Eingabetext</label>
-      <input
-        type="text"
-        :value="value"
-        @input="onInput"
-        :placeholder="placeholder"
-        style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%;"
-      />
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <h2>Counter</h2>
+      <p>Aktueller Wert: <strong>{{ count }}</strong></p>
+      <button @click="increment" style="padding: 8px 16px; font-size: 16px;">
+        +1
+      </button>
     </div>
   </template>
   
-  <script>
-  export default {
-    props: {
-      value: {
-        type: String,
-        default: '',
-      },
-      placeholder: {
-        type: String,
-        default: 'Schreib etwas...',
-      }
-    },
-    methods: {
-      onInput(event) {
-        this.$emit('update:value', event.target.value);
-      }
-    }
+  <script setup>
+  import { ref } from 'vue'
+  
+  // Reaktiver Wert
+  const count = ref(0)
+  
+  // Methode zum Erhöhen
+  const increment = () => {
+    count.value++
   }
   </script>
+  
+  <style scoped>
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  </style>
   
