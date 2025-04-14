@@ -21,13 +21,13 @@
       placeholder: {
         type: String,
         default: 'Schreib etwas...',
-      },
+      }
     },
     methods: {
       onInput(event) {
-        this.$emit('update:value', event.target.value)
-      },
-    },
+        this.$emit('update:value', event.target.value);
+      }
+    }
   }
   </script>
   

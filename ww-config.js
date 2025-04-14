@@ -8,6 +8,7 @@ export default {
         label: 'Inhalt',
         type: 'text',
         defaultValue: '',
+        placeholder: 'Gib deinen Text ein',
         bindable: true,
         editable: true,
       },
@@ -15,9 +16,8 @@ export default {
         label: 'Platzhalter',
         type: 'text',
         defaultValue: 'Schreib etwas...',
-        bindable: true,
         editable: true,
       },
-    },
+    }
   }
   
