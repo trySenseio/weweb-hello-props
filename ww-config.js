@@ -1,24 +1,24 @@
 export default {
     editor: {
-      label: 'Hello World',
-      icon: 'text_fields',
+      label: 'Input-Feld',
+      icon: 'input',
     },
     properties: {
       content: {
-        label: 'Inhalt',
+        label: 'Einstellungen',
         type: 'object',
         defaultValue: {
-          message: 'Hello from WeWeb 👋',
-          color: '#333333',
+          value: '',
+          placeholder: 'Gib deinen Text ein',
         },
         properties: {
-          message: {
-            label: 'Text',
+          value: {
+            label: 'Inhalt',
             type: 'text',
           },
-          color: {
-            label: 'Farbe',
-            type: 'color',
+          placeholder: {
+            label: 'Platzhalter',
+            type: 'text',
           },
         },
         bindable: true,

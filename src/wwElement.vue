@@ -1,22 +1,39 @@
 <template>
     <div>
-      <p>{{ message }}</p>
+      <label style="font-weight: 600; margin-bottom: 8px; display: block;">Eingabetext</label>
+      <input
+        type="text"
+        :value="content.value"
+        @input="onInput"
+        :placeholder="content.placeholder || 'Schreib etwas...'"
+        style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%;"
+      />
     </div>
   </template>
   
-  <script setup>
-  import { computed } from 'vue';
-  
-  const props = defineProps({
-    content: {
-      type: Object,
-      default: () => ({
-        message: 'Fallback Text',
-      }),
+  <script>
+  export default {
+    props: {
+      content: {
+        type: Object,
+        default: () => ({
+          value: '',
+          placeholder: 'Schreib etwas...',
+        }),
+      },
     },
-  });
-  
-  // Falls message mal fehlt, gib "Fallback Text" aus
-  const message = computed(() => props.content.message || 'Fallback Text');
+    methods: {
+      onInput(event) {
+        this.$emit('update:content', {
+          ...this.content,
+          value: event.target.value,
+        })
+      },
+    },
+  }
   </script>
+  
+  <style scoped>
+  /* Optional styles here */
+  </style>
   
