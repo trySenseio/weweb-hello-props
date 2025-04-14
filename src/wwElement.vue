@@ -1,18 +1,20 @@
 <template>
     <div>
-        <div class="tabs">
-  <div
-    v-for="(tab, index) in props.content"
-    :key="index"
-    :class="{ active: index === activeTabIndex }"
-    @click="activeTabIndex = index"
-  >
-    {{ tab.label }}
-  </div>
-  <div class="tab-content">
-    <slot :name="props.content[activeTabIndex]?.value" />
-  </div>
-</div>
+      <div class="tab-header">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          :class="{ active: index === activeTab }"
+          @click="activeTab = index"
+        >
+          {{ tab.label }}
+        </button>
+      </div>
+  
+      <div class="tab-content">
+        <!-- Slot mit dynamischem Namen -->
+        <slot :name="tabs[activeTab]?.value" />
+      </div>
     </div>
   </template>
   
@@ -21,24 +23,29 @@
     props: {
       tabsConfig: {
         type: String,
-        default: '["Info", "Details", "Kontakt"]',
+        default: () =>
+          JSON.stringify([
+            { label: 'Info', value: 'info' },
+            { label: 'Details', value: 'details' },
+            { label: 'Kontakt', value: 'contact' },
+          ]),
       },
     },
     data() {
       return {
         activeTab: 0,
-      }
+      };
     },
     computed: {
       tabs() {
         try {
-          return JSON.parse(this.tabsConfig)
+          return JSON.parse(this.tabsConfig);
         } catch (e) {
-          return ['Tab 1', 'Tab 2', 'Tab 3']
+          return [];
         }
       },
     },
-  }
+  };
   </script>
   
   <style scoped>
