@@ -1,18 +1,19 @@
 <template>
     <div>
-      <div class="tab-header">
-        <button
-          v-for="(tab, index) in tabs"
+      <div class="tabs">
+        <div
+          v-for="(tab, index) in content"
           :key="index"
-          :class="{ active: index === activeTab }"
-          @click="activeTab = index"
+          :class="{ active: index === activeTabIndex }"
+          @click="activeTabIndex = index"
+          class="tab-button"
         >
           {{ tab.label }}
-        </button>
+        </div>
       </div>
   
       <div class="tab-content">
-        <slot :name="tabs[activeTab]?.value" />
+        <slot :name="content[activeTabIndex]?.value"></slot>
       </div>
     </div>
   </template>
@@ -20,47 +21,33 @@
   <script>
   export default {
     props: {
-      tabsConfig: {
-        type: String,
-        default: () =>
-          JSON.stringify([
-            { label: 'Info', value: 'info' },
-            { label: 'Details', value: 'details' },
-            { label: 'Kontakt', value: 'contact' },
-          ]),
+      content: {
+        type: Array,
+        default: () => [],
       },
     },
     data() {
       return {
-        activeTab: 0,
+        activeTabIndex: 0,
       };
-    },
-    computed: {
-      tabs() {
-        try {
-          return JSON.parse(this.tabsConfig);
-        } catch (e) {
-          return [];
-        }
-      },
     },
   };
   </script>
   
   <style scoped>
-  .tab-header {
+  .tabs {
     display: flex;
     gap: 10px;
     margin-bottom: 12px;
   }
-  .tab-header button {
+  .tab-button {
     padding: 8px 16px;
     background-color: #e2e6ea;
     border: none;
     border-radius: 6px;
     cursor: pointer;
   }
-  .tab-header button.active {
+  .tab-button.active {
     background-color: #007bff;
     color: white;
   }
