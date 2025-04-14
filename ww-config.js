@@ -6,7 +6,7 @@ export default {
     properties: {
       tabsConfig: {
         label: 'Tab-Namen (JSON)',
-        type: 'text',
+        type: 'json',
         defaultValue: '["Info", "Details", "Kontakt"]',
         editable: true,
       },
