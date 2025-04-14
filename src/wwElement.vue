@@ -1,6 +1,6 @@
 <template>
     <div>
-      <!-- Tab-Köpfe -->
+      <!-- Tab-Leiste -->
       <div class="tab-header">
         <button
           v-for="(tab, index) in tabs"
@@ -22,9 +22,9 @@
   <script>
   export default {
     props: {
-      tabs: {
-        type: Array,
-        default: () => ['Tab 1', 'Tab 2', 'Tab 3'],
+      tabsConfig: {
+        type: String,
+        default: '["Info", "Details", "Kontakt"]',
       },
     },
     data() {
@@ -32,18 +32,27 @@
         activeTab: 0,
       }
     },
+    computed: {
+      tabs() {
+        try {
+          return JSON.parse(this.tabsConfig)
+        } catch (e) {
+          return ['Tab 1', 'Tab 2', 'Tab 3']
+        }
+      },
+    },
   }
   </script>
   
   <style scoped>
   .tab-header {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 12px;
   }
   .tab-header button {
     padding: 8px 16px;
-    background-color: #e9ecef;
+    background-color: #e2e6ea;
     border: none;
     border-radius: 6px;
     cursor: pointer;
