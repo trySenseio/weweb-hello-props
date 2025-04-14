@@ -1,21 +1,18 @@
 <template>
     <div>
-      <!-- Tab-Leiste -->
-      <div class="tab-header">
-        <button
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="{ active: index === activeTab }"
-          @click="activeTab = index"
-        >
-          {{ tab }}
-        </button>
-      </div>
-  
-      <!-- Slot für aktiven Tab -->
-      <div class="tab-content">
-        <slot :name="'tab-' + activeTab" />
-      </div>
+        <div class="tabs">
+  <div
+    v-for="(tab, index) in props.content"
+    :key="index"
+    :class="{ active: index === activeTabIndex }"
+    @click="activeTabIndex = index"
+  >
+    {{ tab.label }}
+  </div>
+  <div class="tab-content">
+    <slot :name="props.content[activeTabIndex]?.value" />
+  </div>
+</div>
     </div>
   </template>
   
