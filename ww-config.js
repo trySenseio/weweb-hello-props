@@ -4,23 +4,17 @@ export default {
       icon: 'input',
     },
     properties: {
-      content: {
-        label: 'Einstellungen',
-        type: 'object',
-        defaultValue: {
-          value: '',
-          placeholder: 'Gib deinen Text ein',
-        },
-        properties: {
-          value: {
-            label: 'Inhalt',
-            type: 'text',
-          },
-          placeholder: {
-            label: 'Platzhalter',
-            type: 'text',
-          },
-        },
+      value: {
+        label: 'Inhalt',
+        type: 'text',
+        defaultValue: '',
+        bindable: true,
+        editable: true,
+      },
+      placeholder: {
+        label: 'Platzhalter',
+        type: 'text',
+        defaultValue: 'Schreib etwas...',
         bindable: true,
         editable: true,
       },
