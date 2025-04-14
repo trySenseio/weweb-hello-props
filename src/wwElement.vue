@@ -1,57 +1,62 @@
 <template>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-      <h2>Counter</h2>
-      <p>Wert: <strong>{{ count }}</strong></p>
+    <div>
+      <!-- Tab-Köpfe -->
+      <div class="tab-header">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          :class="{ active: index === activeTab }"
+          @click="activeTab = index"
+        >
+          {{ tab }}
+        </button>
+      </div>
   
-      <div style="display: flex; gap: 10px;">
-        <button @click="decrement">➖</button>
-        <button @click="increment">➕</button>
-        <button @click="reset">🔁 Reset</button>
+      <!-- Slot für aktiven Tab -->
+      <div class="tab-content">
+        <slot :name="'tab-' + activeTab" />
       </div>
     </div>
   </template>
   
-  <script setup>
-  import { ref, watch } from 'vue'
-  const props = defineProps({
-    start: { type: Number, default: 0 },
-    step: { type: Number, default: 1 }
-  })
-  
-  // Zustand initialisieren
-  const count = ref(props.start)
-  
-  // Events an WeWeb zurückgeben
-  const emit = defineEmits(['update:value'])
-  
-  const increment = () => {
-    count.value += props.step
+  <script>
+  export default {
+    props: {
+      tabs: {
+        type: Array,
+        default: () => ['Tab 1', 'Tab 2', 'Tab 3'],
+      },
+    },
+    data() {
+      return {
+        activeTab: 0,
+      }
+    },
   }
-  const decrement = () => {
-    count.value -= props.step
-  }
-  const reset = () => {
-    count.value = props.start
-  }
-  
-  // Automatisch in den WeWeb-State zurückspeichern
-  watch(count, (val) => {
-    emit('update:value', val)
-  })
   </script>
   
   <style scoped>
-  button {
-    background-color: #007bff;
-    color: white;
+  .tab-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .tab-header button {
+    padding: 8px 16px;
+    background-color: #e9ecef;
     border: none;
     border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 16px;
     cursor: pointer;
   }
-  button:hover {
-    background-color: #0056b3;
+  .tab-header button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  .tab-content {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fff;
   }
   </style>
   
