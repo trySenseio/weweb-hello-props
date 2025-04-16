@@ -1,21 +1,16 @@
 export default {
-    editor: {
-      label: 'Tabs mit JSON',
-      icon: 'tab',
+  editor: {
+    label: {
+      en: "My Element",
     },
-    properties: {
-        tabs: {
-          label: 'Tab-Namen (JSON)',
-          type: 'json',
-          defaultValue: [
-            { label: "Info" },
-            { label: "Details" },
-            { label: "Kontakt" }
-          ],
-          editable: true,
-          bindable: true,
-        }
-      },      
-    wwChildren: true, // Slots aktivieren
-  }
-  
+  },
+  properties: {
+    textColor: {
+      label: {
+        en: "Text color",
+      },
+      type: "Color",
+      defaultValue: "#F23636",
+    },
+  },
+};

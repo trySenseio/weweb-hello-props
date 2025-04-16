@@ -1,12 +1,11 @@
 {
-    "name": "weweb-hello-props",
-    "version": "0.0.1",
-    "scripts": {
-      "serve": "weweb serve",
-      "build": "weweb build"
-    },
-    "devDependencies": {
-    "@weweb/cli": "*"
-    }
+  "name": "test_probs",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "weweb build",
+    "serve": "weweb serve"
+  },
+  "devDependencies": {
+    "@weweb/cli": "latest"
   }
-  
+}
