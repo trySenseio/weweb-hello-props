@@ -1,16 +1,35 @@
 export default {
   editor: {
     label: {
-      en: "My Element",
+      en: "Custom Counter",
     },
+    icon: "counter",
   },
   properties: {
-    textColor: {
-      label: {
-        en: "Text color",
-      },
+    start: {
+      label: { en: "Start value" },
+      type: "Number",
+      defaultValue: 0,
+    },
+    step: {
+      label: { en: "Step" },
+      type: "Number",
+      defaultValue: 1,
+    },
+    buttonColor: {
+      label: { en: "Button color" },
       type: "Color",
-      defaultValue: "#F23636",
+      defaultValue: "#007BFF",
+    },
+    textColor: {
+      label: { en: "Text color" },
+      type: "Color",
+      defaultValue: "#000000",
+    },
+    backgroundColor: {
+      label: { en: "Background color" },
+      type: "Color",
+      defaultValue: "#F8F8F8",
     },
   },
 };
