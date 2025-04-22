@@ -1,35 +1,40 @@
 export default {
   editor: {
     label: {
-      en: "Custom Counter",
+      en: "Simple Chart",
     },
-    icon: "counter",
   },
   properties: {
-    start: {
-      label: { en: "Start value" },
-      type: "Number",
-      defaultValue: 0,
+    chartType: {
+      label: { en: "Chart Type" },
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: "bar", label: "Bar" },
+          { value: "line", label: "Line" },
+        ],
+      },
+      defaultValue: "bar",
     },
-    step: {
-      label: { en: "Step" },
-      type: "Number",
-      defaultValue: 1,
+    datasetLabel: {
+      label: { en: "Dataset Label" },
+      type: "Text",
+      defaultValue: "My Data",
     },
-    buttonColor: {
-      label: { en: "Button color" },
+    labels: {
+      label: { en: "X Axis Labels (JSON Array)" },
+      type: "Text",
+      defaultValue: '["A", "B", "C"]',
+    },
+    data: {
+      label: { en: "Data (JSON Array)" },
+      type: "Text",
+      defaultValue: "[5, 10, 7]",
+    },
+    chartColor: {
+      label: { en: "Bar/Line Color" },
       type: "Color",
-      defaultValue: "#007BFF",
-    },
-    textColor: {
-      label: { en: "Text color" },
-      type: "Color",
-      defaultValue: "#000000",
-    },
-    backgroundColor: {
-      label: { en: "Background color" },
-      type: "Color",
-      defaultValue: "#F8F8F8",
+      defaultValue: "#4E6574",
     },
   },
 };
